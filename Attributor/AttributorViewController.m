@@ -7,6 +7,7 @@
 //
 
 #import "AttributorViewController.h"
+#import "TextStatsViewController.h"
 
 @interface AttributorViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *headline;
@@ -28,7 +29,7 @@
                                   forState:UIControlStateNormal];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self usePreferredFont];
@@ -70,6 +71,15 @@
 - (IBAction)unoutlineBodySelection {
     [self.body.textStorage removeAttribute:NSStrokeWidthAttributeName
                                      range:self.body.selectedRange];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Analyze Text"]) {
+        if ([segue.destinationViewController isKindOfClass:[TextStatsViewController class]]) {
+            TextStatsViewController *tsvc = (TextStatsViewController *)segue.destinationViewController;
+            tsvc.textToAnalyze = self.body.textStorage;
+        }
+    }
 }
 
 @end
