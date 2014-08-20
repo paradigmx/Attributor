@@ -10,7 +10,6 @@
 #import "TextStatsViewController.h"
 
 @interface AttributorViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *headline;
 @property (weak, nonatomic) IBOutlet UITextView *body;
 @property (weak, nonatomic) IBOutlet UIButton *outlineButton;
 @end
@@ -45,7 +44,6 @@
 
 - (void)usePreferredFont {
     self.body.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.headline.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
